@@ -12,14 +12,19 @@ import java.util.Calendar;
  *
  * @author Alexander Bruckbauer s17001620
  */
+
 public class TwitterJSONClient {
+    //set your JSON FILE PATH
+    public static final String FILEPATH = "C:\\tweets.json";
+    
     public static void main(String[] args) {
+        
         //initialize the parser and writer
         JSONToTweetListParser parser = new JSONToTweetListParser();
         TweetToJSONListWriter writer = new TweetToJSONListWriter();
         //load the tweets
         ArrayList<Tweet> tweets = new ArrayList<>();
-        tweets.addAll(Arrays.asList(parser.loadJSONForTweets()));
+        tweets.addAll(Arrays.asList(parser.loadJSONForTweets(FILEPATH)));
         //Display all tweets
         tweets.forEach((tweet) -> {
             System.out.println(tweet.getText());
@@ -32,10 +37,10 @@ public class TwitterJSONClient {
         tweets.add(newtweet);
         //write the tweet list to file
         Tweet[] tweetsToSave = tweets.toArray(new Tweet[tweets.size()]);
-        writer.WriteJSON(tweetsToSave );
+        writer.WriteJSON(tweetsToSave,FILEPATH);
         //reload the written file
         tweets = new ArrayList<>();
-        tweets.addAll(Arrays.asList(parser.loadJSONForTweets()));
+        tweets.addAll(Arrays.asList(parser.loadJSONForTweets(FILEPATH)));
         //display tweets
         tweets.forEach((tweet) -> {
             System.out.println(tweet.getText());

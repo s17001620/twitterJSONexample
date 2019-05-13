@@ -22,10 +22,10 @@ import lombok.extern.java.Log;
 public class JSONToTweetListParser {
     
 
-      public Tweet[]  loadJSONForTweets(){
+      public Tweet[]  loadJSONForTweets(String filepath){
             String json = null;  
           try {
-                 json =  new String(Files.readAllBytes(Paths.get("C:\\tweets.json")));
+                 json =  new String(Files.readAllBytes(Paths.get(filepath)));
               } catch (IOException ex) {
                   Logger.getLogger(JSONToTweetListParser.class.getName()).log(Level.SEVERE, null, ex);
               }

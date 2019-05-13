@@ -33,4 +33,3 @@ edu\glyndwr\twitterjson\model\Entities__.class
 edu\glyndwr\twitterjson\model\RetweetedStatus.class
 edu\glyndwr\twitterjson\model\Sizes.class
 edu\glyndwr\twitterjson\model\User.class
-edu\glyndwr\twitterjson\backend\TweetHandler.class

@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author Alexander Bruckbauer s17001620
  */
 public class TweetToJSONListWriter {
-public void WriteJSON(Tweet[] tweets){
+public void WriteJSON(Tweet[] tweets, String filepath){
     
   Gson gson = new Gson();
   
@@ -21,8 +21,8 @@ public void WriteJSON(Tweet[] tweets){
     json = gson.toJson(tweets);
   
   try {
-   //write converted json data to a file named "CountryGSON.json"
-   FileWriter writer = new FileWriter("C:\\tweets.json");
+   //write converted json data to a file 
+   FileWriter writer = new FileWriter(filepath);
    writer.write(json);
    writer.close();
      } catch (IOException e) {
