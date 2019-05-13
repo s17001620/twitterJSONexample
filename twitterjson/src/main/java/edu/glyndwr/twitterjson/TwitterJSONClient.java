@@ -14,22 +14,29 @@ import java.util.Calendar;
  */
 public class TwitterJSONClient {
     public static void main(String[] args) {
+        //initialize the parser and writer
         JSONToTweetListParser parser = new JSONToTweetListParser();
         TweetToJSONListWriter writer = new TweetToJSONListWriter();
+        //load the tweets
         ArrayList<Tweet> tweets = new ArrayList<>();
         tweets.addAll(Arrays.asList(parser.loadJSONForTweets()));
+        //Display all tweets
         tweets.forEach((tweet) -> {
             System.out.println(tweet.getText());
         });
+        //create new tweet
         Calendar cla = Calendar.getInstance();
         Tweet newtweet = new Tweet();
         newtweet.setCreatedAt(cla.getTime().toString());
         newtweet.setText("NEW TWEET TO WRITE");
         tweets.add(newtweet);
+        //write the tweet list to file
         Tweet[] tweetsToSave = tweets.toArray(new Tweet[tweets.size()]);
         writer.WriteJSON(tweetsToSave );
+        //reload the written file
         tweets = new ArrayList<>();
         tweets.addAll(Arrays.asList(parser.loadJSONForTweets()));
+        //display tweets
         tweets.forEach((tweet) -> {
             System.out.println(tweet.getText());
         });
